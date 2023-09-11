@@ -27,7 +27,6 @@ const Create = () => {
 
   return (
     <div className="main">
-      {/* Имя */}
       <input
         type="text"
         placeholder="Enter name"
@@ -36,7 +35,6 @@ const Create = () => {
         className="name-input"
       />
 
-      {/* Возраст */}
       <div className="custom-input">
         <input
           type="number"
@@ -53,7 +51,6 @@ const Create = () => {
         </button>
       </div>
 
-      {/* Выбор темы */}
       <div className="subject">
         <select
           placeholder="Subject line"
@@ -66,7 +63,7 @@ const Create = () => {
             Subject line
           </option>
           <option>I'd likeject</option>
-          {/* <option>I'd like to ask a question</option> */}
+          <option>I'd like to ask a question</option>
           <option>I'd like to make a proposal</option>
         </select>
         <button className="subject-decrement-button">
@@ -78,13 +75,11 @@ const Create = () => {
         <input type="checkbox" id="switch" className="toggle-input" />
       </div>
 
-      <div className="button-container">
-        <button className="insert-button">Insert</button>
-        <label htmlFor="switch" className="toggle-label">
-          Mode
-        </label>
-        <button className="delete-button">Delete</button>
-      </div>
+      <button className="insert-button">Insert</button>
+      <label htmlFor="switch" className="toggle-label">
+        Mode
+      </label>
+      <button className="delete-button">Delete</button>
     </div>
   );
 };
