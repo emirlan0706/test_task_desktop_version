@@ -14,24 +14,20 @@
 .subject {
   display: flex;
   align-items: center;
-  width: 200px; /* Задайте ширину контейнера по своему усмотрению */
+  width: 200px;
 }
 
 .subbb {
   flex-grow: 1;
-  padding-right: 10px; /* Учтите ширину кнопки, чтобы не перекрывать текст */
+  padding-right: 10px;
 }
 
 .subject-decrement-button {
-  /* padding: 5px 10px; Задайте размеры кнопки по вашему выбору */
+  /* padding: 5px 10px; */
   margin-left: -2px;
   background-color: #ccc;
   border: none;
   cursor: pointer;
-}
-/* Стили для кнопки "Insert" */
-.insert-button {
-  display: block;
 }
 
 /* Стили для блока custom-input */
@@ -41,44 +37,25 @@
   align-items: center;
   border: 1px solid #ccc;
   border-radius: 4px;
-  /* padding: 5px; */
-}
-
-/* Стили для блока buttons */
-.buttons {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  margin-right: 5px;
 }
 
 /* Стили для <input> с типом "number" */
 .age-input {
   border: none;
   outline: none;
-  /* width: 90px; */
   text-align: start;
 }
 
 /* Стили для обычных кнопок */
 .increment-button {
-  /* margin-left: -2px; */
   background-color: #ccc;
   border: none;
   cursor: pointer;
 }
 .decrement-button {
-  /* margin-left: -2px; */
   background-color: #ccc;
   border: none;
   cursor: pointer;
-}
-
-/* Стили для блока с переключателем */
-.toggle-container {
-  height: 0;
-  width: 0;
-  visibility: hidden;
 }
 
 /* Стили для метки переключателя */
@@ -88,32 +65,33 @@
   line-height: 20px;
   width: 35px;
   height: 20px;
-  background: rgb(58, 106, 22);
+  background: rgb(51, 78, 24);
   display: inline-block;
   border-radius: 10px;
   position: relative;
 }
 
 /* Стили для состояния "checked" метки */
-.toggle-label:after {
+.toggle-label::after {
   content: "";
   position: absolute;
   top: 2px;
   left: 2px;
   width: 16px;
+  background: rgb(238, 238, 238);
   height: 16px;
-  background: #fff;
   border-radius: 50%;
   transition: 0.3s;
 }
 
 /* Стили для состояния "checked" метки после активации */
-input:checked + .toggle-label:after {
+input:checked + .toggle-label::after {
   left: calc(100% - 2px);
   transform: translateX(-100%);
 }
-
-/* Стили для кнопки "Delete" */
-.delete-button {
-  display: block;
+.toggle-input {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
 }

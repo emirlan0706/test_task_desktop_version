@@ -70,12 +70,10 @@ const Create = () => {
           <HiOutlineChevronDown />
         </button>
       </div>
-
-      <div className="toggle-container">
-        <input type="checkbox" id="switch" className="toggle-input" />
-      </div>
+      <input type="checkbox" />
 
       <button className="insert-button">Insert</button>
+      <input type="checkbox" id="switch" className="toggle-input" />
       <label htmlFor="switch" className="toggle-label">
         Mode
       </label>
