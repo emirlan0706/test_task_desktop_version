@@ -1,10 +1,32 @@
 import React, { useState } from "react";
-import "./Create.css"; // Импортируем стили
+import "./Create.css";
 import { HiOutlineChevronDown, HiOutlineChevronUp } from "react-icons/hi";
+import DataTable from "./DateTable";
+import { useData } from "../context/dataContextProvider";
 
 const Create = () => {
   const [name, setName] = useState("");
-  const [age, setAge] = useState(0);
+  const [age, setAge] = useState("");
+  const [subscription, setSubscription] = useState("");
+  const [employed, setEmployed] = useState(false);
+
+  const { addData, tableData, isNightMode, toggleNightMode } = useData();
+
+  const handleInsert = () => {
+    const newData = {
+      name,
+      age,
+      subscription,
+      employed,
+    };
+
+    addData(newData);
+
+    setName("");
+    setAge(0);
+    setSubscription("");
+    setEmployed(false);
+  };
 
   const incrementAge = () => {
     setAge(age + 1);
@@ -16,68 +38,76 @@ const Create = () => {
     }
   };
 
-  const handleAddItem = () => {
-    // Ваш код для добавления элемента в базу данных
-    console.log("Name:", name);
-    console.log("Age:", age);
-    // Сбросить значения полей после добавления
-    setName("");
-    setAge(0);
-  };
-
   return (
-    <div className="main">
-      <input
-        type="text"
-        placeholder="Enter name"
-        value={name}
-        onChange={(e) => setName(e.target.value)}
-        className="name-input"
-      />
-
-      <div className="custom-input">
+    <div className={`last ${isNightMode ? "night-mode" : ""}`}>
+      <div className="main">
         <input
-          type="number"
-          value={age}
-          placeholder="Age"
-          onChange={(e) => setAge(Number(e.target.value))}
-          className="age-input"
+          type="text"
+          placeholder="Name"
+          value={name}
+          onChange={(e) => setName(e.target.value)}
+          className="name-input"
         />
-        <button className="decrement-button" onClick={decrementAge}>
-          <HiOutlineChevronDown />
+        <div className="custom-input">
+          <input
+            type="number"
+            value={age}
+            placeholder={age < 0 ? "Age" : ""}
+            onChange={(e) => setAge(Number(e.target.value))}
+            className="age-input"
+          />
+          <button className="decrement-button" onClick={decrementAge}>
+            <HiOutlineChevronDown />
+          </button>
+          <button className="increment-button" onClick={incrementAge}>
+            <HiOutlineChevronUp />
+          </button>
+        </div>
+        <div className="subject">
+          <select
+            value={subscription}
+            onChange={(e) => setSubscription(e.target.value)}
+            name="subject"
+            id="subject_input"
+            required
+            className="subject-select"
+          >
+            <option className="subbb" disabled hidden></option>
+            <option>Subscribed</option>
+            <option>Not Subscribed</option>
+            <option>Other</option>
+          </select>
+          <button className="subject-button">
+            <HiOutlineChevronDown />
+          </button>
+        </div>
+        <div className="checkter">
+          <label htmlFor="check" className="main-check">
+            <input
+              type="checkbox"
+              id="check"
+              checked={employed}
+              onChange={() => setEmployed(!employed)}
+              name="check"
+            />
+            Employed
+          </label>
+        </div>
+        <button onClick={handleInsert} className="button-have">
+          Insert
         </button>
-        <button className="increment-button" onClick={incrementAge}>
-          <HiOutlineChevronUp />
-        </button>
-      </div>
-
-      <div className="subject">
-        <select
-          placeholder="Subject line"
-          name="subject"
-          id="subject_input"
-          required
-          className="subject-select"
+        <div className="line"></div>
+        <input type="checkbox" id="switch" className="toggle-input" />
+        <label
+          htmlFor="switch"
+          className="toggle-label"
+          onClick={toggleNightMode}
         >
-          <option className="subbb" disabled hidden selected>
-            Subject line
-          </option>
-          <option>I'd likeject</option>
-          <option>I'd like to ask a question</option>
-          <option>I'd like to make a proposal</option>
-        </select>
-        <button className="subject-decrement-button">
-          <HiOutlineChevronDown />
-        </button>
+          Mode
+        </label>
+        <button className="button-have">Delete</button>
       </div>
-      <input type="checkbox" />
-
-      <button className="insert-button">Insert</button>
-      <input type="checkbox" id="switch" className="toggle-input" />
-      <label htmlFor="switch" className="toggle-label">
-        Mode
-      </label>
-      <button className="delete-button">Delete</button>
+      <DataTable data={tableData} />
     </div>
   );
 };

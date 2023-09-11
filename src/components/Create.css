@@ -1,92 +1,154 @@
 .main {
   display: flex;
   justify-content: center;
+  align-items: baseline;
   flex-direction: column;
-  align-items: flex-start;
-  height: 100vh;
+  width: 265px;
+  height: 380px;
+  border: 1px solid #000;
+  border-radius: 5px;
+  position: relative;
+  overflow: visible;
+  margin: 200px;
+  padding: 0px 5px 0px 5px;
+  background-color: #fff;
 }
 
-/* Стили для <select> */
-.subject-select {
+.main::before {
+  content: "Insert Row"; /* Текст, который нужно добавить внутрь главного контейнера */
+  position: absolute;
+  background-color: #fff;
+  top: -12px; /* Отступ от верхней границы контейнера */
+  left: 10px; /* Отступ от левой границы контейнера */
+
+  /* Другие стили для текста заголовка */
+}
+
+.name-input {
+  width: 254px;
+  height: 40px;
+  text-align: start;
+  font-size: 16px;
   outline: none;
-  -webkit-appearance: none;
+  border: 1px solid rgb(130, 128, 128);
+  border-radius: 4px;
+  padding-left: 5px;
+  margin-top: 4px;
+  margin-bottom: 11px;
 }
-.subject {
-  display: flex;
-  align-items: center;
-  width: 200px;
-}
-
-.subbb {
-  flex-grow: 1;
-  padding-right: 10px;
-}
-
-.subject-decrement-button {
-  /* padding: 5px 10px; */
-  margin-left: -2px;
-  background-color: #ccc;
-  border: none;
-  cursor: pointer;
-}
-
 /* Стили для блока custom-input */
 .custom-input {
-  width: 150px;
+  outline: none;
+
   display: flex;
   align-items: center;
-  border: 1px solid #ccc;
+  border: 1px solid rgb(130, 128, 128);
   border-radius: 4px;
+  margin-bottom: 11px;
 }
 
 /* Стили для <input> с типом "number" */
 .age-input {
-  border: none;
+  width: 199px;
+  height: 37px;
   outline: none;
   text-align: start;
+  border: 0px solid rgb(130, 128, 128);
+  padding-left: 5px;
 }
 
 /* Стили для обычных кнопок */
 .increment-button {
+  padding: 11px 7px;
   background-color: #ccc;
   border: none;
   cursor: pointer;
 }
 .decrement-button {
+  padding: 11px 7px;
   background-color: #ccc;
   border: none;
+  border-right: 1px solid rgb(111, 111, 111);
   cursor: pointer;
+}
+
+/* Стили для <select> */
+.subject-select {
+  width: 234px;
+  height: 40px;
+  border: 0px solid rgb(130, 128, 128);
+  border-radius: 4px;
+  font-size: 17;
+  outline: none;
+  -webkit-appearance: none;
+  padding-left: 5px;
+}
+.subject {
+  outline: none;
+  display: flex;
+  align-items: center;
+  border: 1px solid rgb(130, 128, 128);
+  border-radius: 4px;
+  margin-bottom: 17px;
+}
+
+.subject-button {
+  padding: 11px 7px;
+  background-color: #ccc;
+  border: none;
+
+  cursor: pointer;
+}
+
+.button-have {
+  width: 265px;
+  height: 40px;
+  background-color: #ccc;
+  border: none;
+  border-radius: 4px;
+  margin-bottom: 1px;
+}
+
+.line {
+  width: 265px;
+  background-color: rgb(155, 155, 155);
+  height: 1.2px;
+  /* margin: 0 auto; */
+  margin-top: 20px;
+  margin-bottom: 15px;
 }
 
 /* Стили для метки переключателя */
 .toggle-label {
   cursor: pointer;
-  text-indent: 40px;
+  text-indent: 50px;
   line-height: 20px;
-  width: 35px;
-  height: 20px;
-  background: rgb(51, 78, 24);
+  width: 46px;
+  height: 23px;
+  background: rgb(89, 156, 84);
   display: inline-block;
   border-radius: 10px;
   position: relative;
+  outline: none;
+  margin-bottom: 15px;
 }
 
 /* Стили для состояния "checked" метки */
 .toggle-label::after {
   content: "";
   position: absolute;
-  top: 2px;
-  left: 2px;
-  width: 16px;
-  background: rgb(238, 238, 238);
-  height: 16px;
+  top: 4px;
+  left: 4px;
+  width: 15px;
+  background: rgb(17, 17, 17);
+  height: 15px;
   border-radius: 50%;
   transition: 0.3s;
 }
 
 /* Стили для состояния "checked" метки после активации */
 input:checked + .toggle-label::after {
-  left: calc(100% - 2px);
+  left: calc(100% - 5px);
   transform: translateX(-100%);
 }
 .toggle-input {
@@ -94,4 +156,63 @@ input:checked + .toggle-label::after {
   opacity: 0;
   width: 0;
   height: 0;
+}
+
+.main-check {
+  display: flex;
+  align-items: center;
+  text-indent: 5px;
+  margin-bottom: 17px;
+}
+
+#check {
+  margin: 0;
+  padding: 0;
+  background: none;
+  border: none;
+  border-radius: 0;
+  outline: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+#check {
+  cursor: pointer;
+  padding-left: 30px; /*label手前にチェックボックス用の余白を開ける*/
+  vertical-align: middle;
+  position: relative;
+}
+#check::before,
+#check::after {
+  content: "";
+  display: block;
+  position: absolute;
+}
+#check::before {
+  background-color: #fff;
+  border-radius: 4px;
+  border: 2px solid rgb(89, 156, 84);
+  width: 20px; /*チェックボックスの横幅*/
+  height: 20px; /*チェックボックスの縦幅*/
+  transform: translateY(-50%);
+  top: 50%;
+  left: 5px;
+}
+
+#check::after {
+  border-bottom: 3px solid #666464; /*チェックの太さ*/
+  border-left: 3px solid #666464; /*チェックの太さ*/
+  opacity: 0; /*チェック前は非表示*/
+  height: 6px; /*チェックの高さ*/
+  width: 11px; /*チェックの横幅*/
+  transform: scale(0) rotate(-45deg);
+  top: -7px; /*チェック時の位置調整*/
+  left: 10px; /*チェック時の位置調整*/
+  transition: opacity 0.3s, transform 0.2s;
+}
+
+#check:checked::after {
+  opacity: 1; /*チェック後表示*/
+  transform: scale(1) rotate(-45deg);
 }
