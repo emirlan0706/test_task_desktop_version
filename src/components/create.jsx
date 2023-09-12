@@ -6,11 +6,18 @@ import { useData } from "../context/dataContextProvider";
 
 const Create = () => {
   const [name, setName] = useState("");
-  const [age, setAge] = useState("");
-  const [subscription, setSubscription] = useState("");
+  const [age, setAge] = useState(0);
+  const [subscription, setSubscription] = useState("No Subscribed");
   const [employed, setEmployed] = useState(false);
-
-  const { addData, tableData, isNightMode, toggleNightMode } = useData();
+  const {
+    tableData,
+    addData,
+    editData,
+    clearData,
+    isNightMode,
+    toggleNightMode,
+  } = useData();
+  const [editingIndex, setEditingIndex] = useState(-1); // Индекс редактируемой записи
 
   const handleInsert = () => {
     const newData = {
@@ -20,12 +27,30 @@ const Create = () => {
       employed,
     };
 
-    addData(newData);
+    if (editingIndex === -1) {
+      addData(newData); // Добавляем новую запись
+    } else {
+      editData(editingIndex, newData); // Редактируем существующую запись
+      setEditingIndex(-1); // Завершаем редактирование
+    }
 
     setName("");
     setAge(0);
-    setSubscription("");
+    setSubscription("No Subscribed");
     setEmployed(false);
+  };
+
+  const handleDelete = (index) => {
+    clearData(index);
+  };
+
+  const handleEdit = (index) => {
+    const dataToEdit = tableData[index];
+    setEditingIndex(index);
+    setName(dataToEdit.name);
+    setAge(dataToEdit.age);
+    setSubscription(dataToEdit.subscription);
+    setEmployed(dataToEdit.employed);
   };
 
   const incrementAge = () => {
@@ -39,75 +64,81 @@ const Create = () => {
   };
 
   return (
-    <div className={`last ${isNightMode ? "night-mode" : ""}`}>
-      <div className="main">
-        <input
-          type="text"
-          placeholder="Name"
-          value={name}
-          onChange={(e) => setName(e.target.value)}
-          className="name-input"
-        />
-        <div className="custom-input">
+    <div className="reset">
+      <div className={`last ${isNightMode ? "night-mode" : ""}`}>
+        <div className="main">
           <input
-            type="number"
-            value={age}
-            placeholder={age < 0 ? "Age" : ""}
-            onChange={(e) => setAge(Number(e.target.value))}
-            className="age-input"
+            type="text"
+            placeholder="Name"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+            className="name-input"
           />
-          <button className="decrement-button" onClick={decrementAge}>
-            <HiOutlineChevronDown />
-          </button>
-          <button className="increment-button" onClick={incrementAge}>
-            <HiOutlineChevronUp />
-          </button>
-        </div>
-        <div className="subject">
-          <select
-            value={subscription}
-            onChange={(e) => setSubscription(e.target.value)}
-            name="subject"
-            id="subject_input"
-            required
-            className="subject-select"
-          >
-            <option className="subbb" disabled hidden></option>
-            <option>Subscribed</option>
-            <option>Not Subscribed</option>
-            <option>Other</option>
-          </select>
-          <button className="subject-button">
-            <HiOutlineChevronDown />
-          </button>
-        </div>
-        <div className="checkter">
-          <label htmlFor="check" className="main-check">
+          <div className="custom-input">
             <input
-              type="checkbox"
-              id="check"
-              checked={employed}
-              onChange={() => setEmployed(!employed)}
-              name="check"
+              type="number"
+              value={age}
+              onChange={(e) => setAge(Number(e.target.value))}
+              className="age-input"
             />
-            Employed
+            <button className="decrement-button" onClick={decrementAge}>
+              <HiOutlineChevronDown />
+            </button>
+            <button className="increment-button" onClick={incrementAge}>
+              <HiOutlineChevronUp />
+            </button>
+          </div>
+          <div className="subject">
+            <select
+              value={subscription}
+              onChange={(e) => setSubscription(e.target.value)}
+              name="subject"
+              id="subject_input"
+              required
+              className="subject-select"
+            >
+              <option value="No Subscribed">No Subscribed</option>
+              <option value="Subscribed">Subscribed</option>
+              <option value="Other">Other</option>
+            </select>
+            <button className="subject-button">
+              <HiOutlineChevronDown />
+            </button>
+          </div>
+          <div className="checkter">
+            <label htmlFor="check" className="main-check">
+              <input
+                type="checkbox"
+                id="check"
+                checked={employed}
+                onChange={() => setEmployed(!employed)}
+                name="check"
+              />
+              Employed
+            </label>
+          </div>
+          <button onClick={handleInsert} className="button-have">
+            {editingIndex === -1 ? "Insert" : "Update"}
+          </button>
+          <div className="line"></div>
+          <input type="checkbox" id="switch" className="toggle-input" />
+          <label
+            htmlFor="switch"
+            className="toggle-label"
+            onClick={toggleNightMode}
+          >
+            Mode
           </label>
+          <button className="button-have" onClick={() => handleDelete()}>
+            Delete
+          </button>
         </div>
-        <button onClick={handleInsert} className="button-have">
-          Insert
-        </button>
-        <div className="line"></div>
-        <input type="checkbox" id="switch" className="toggle-input" />
-        <label
-          htmlFor="switch"
-          className="toggle-label"
-          onClick={toggleNightMode}
-        >
-          Mode
-        </label>
-        <button className="button-have">Delete</button>
+        <DataTable
+          data={tableData}
+          onEdit={handleEdit}
+          onDelete={handleDelete}
+        />
       </div>
-      <DataTable data={tableData} />
     </div>
   );
 };

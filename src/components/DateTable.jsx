@@ -2,30 +2,41 @@ import React from "react";
 import "./DataTable.css";
 import { useData } from "../context/dataContextProvider";
 
-const DataTable = () => {
-  const { tableData, isNightMode } = useData();
+const DataTable = ({ data, onEdit, onDelete }) => {
+  const { isNightMode } = useData();
 
   return (
-    <table className={isNightMode ? "night-mode" : ""}>
-      <thead>
-        <tr>
-          <th>Name</th>
-          <th>Age</th>
-          <th>Subscription</th>
-          <th>Employed</th>
-        </tr>
-      </thead>
-      <tbody>
-        {tableData.map((item, index) => (
-          <tr key={index}>
-            <td>{item.name}</td>
-            <td>{item.age}</td>
-            <td>{item.subscription}</td>
-            <td>{item.employed ? "Yes" : "No"}</td>
+    <div className="chiled">
+      <table className={isNightMode ? "night-mode" : ""}>
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Age</th>
+            <th>Subscription</th>
+            <th>Employed</th>
+            <th>Action</th>
           </tr>
-        ))}
-      </tbody>
-    </table>
+        </thead>
+        <tbody>
+          {data.map((item, index) => (
+            <tr key={index}>
+              <td>{item.name ? item.name : "Not"}</td>
+              <td>{item.age}</td>
+              <td>{item.subscription ? "Subscription" : "No Subscription"}</td>
+              <td>{item.employed ? "Employed" : "Unemployed"}</td>
+              <td>
+                <button className="edit" onClick={() => onEdit(index)}>
+                  Edit
+                </button>
+                <button className="delete" onClick={() => onDelete(index)}>
+                  Delete
+                </button>
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
   );
 };
 

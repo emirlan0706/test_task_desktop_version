@@ -1,15 +1,87 @@
+/* Стили для элементов в темной теме */
+.night-mode.last {
+  background-color: #444;
+}
+
+.night-mode .main {
+  background-color: #444; /* Цвет фона для темной темы */
+  color: rgb(206, 205, 205); /* Цвет текста для темной темы */
+  border: 1.5px solid rgb(209, 209, 209);
+  border-radius: 5px;
+}
+.night-mode .main::before {
+  background-color: #444; /* Цвет фона для темной темы */
+  color: rgb(252, 252, 252); /* Цвет текста для темной темы */
+}
+.night-mode .age-input {
+  background-color: #444; /* Цвет фона для темной темы */
+  color: #fff; /* Цвет текста для темной темы */
+}
+.night-mode .name-input {
+  background-color: #444; /* Цвет фона для темной темы */
+  color: #fff; /* Цвет текста для темной темы */
+}
+.night-mode .subject-select {
+  background-color: #444; /* Цвет фона для темной темы */
+  color: #fff; /* Цвет текста для темной темы */
+}
+.night-mode #check::before {
+  background-color: #444; /* Цвет фона для темной темы */
+  color: #fff; /* Цвет текста для темной темы */
+}
+.night-mode #check:checked::after {
+  background-color: #444; /* Цвет фона для темной темы */
+  color: #fff; /* Цвет текста для темной темы */
+  border-bottom: 3px solid #cbcbcb; /*チェックの太さ*/
+  border-left: 3px solid #cccccc; /*チェックの太さ*/
+}
+.night-mode .toggle-label::after {
+  background-color: #444; /* Цвет фона для темной темы */
+  color: #fff; /* Цвет текста для темной темы */
+  background: rgb(208, 208, 208);
+}
+
+.night-mode .decrement-button {
+  background-color: #444; /* Цвет фона для темной темы */
+  color: #fff; /* Цвет текста для темной темы */
+  background: rgb(114, 114, 114);
+}
+.night-mode .increment-button {
+  background-color: #444; /* Цвет фона для темной темы */
+  color: #fff; /* Цвет текста для темной темы */
+  background: rgb(114, 114, 114);
+}
+.night-mode .subject-button {
+  background-color: #444; /* Цвет фона для темной темы */
+  color: #fff; /* Цвет текста для темной темы */
+  background: rgb(114, 114, 114);
+}
+.night-mode .button-have {
+  background-color: #444; /* Цвет фона для темной темы */
+  color: rgb(255, 252, 252); /* Цвет текста для темной темы */
+  background: rgb(106, 106, 106);
+}
+
+.last {
+  display: flex;
+  justify-content: center;
+  padding-top: 190px;
+  padding-bottom: 200px;
+  background-color: #fff;
+}
+
 .main {
   display: flex;
   justify-content: center;
   align-items: baseline;
   flex-direction: column;
   width: 265px;
-  height: 380px;
+  height: 390px;
   border: 1px solid #000;
   border-radius: 5px;
   position: relative;
   overflow: visible;
-  margin: 200px;
+  margin-right: 23px;
   padding: 0px 5px 0px 5px;
   background-color: #fff;
 }
@@ -33,7 +105,7 @@
   border: 1px solid rgb(130, 128, 128);
   border-radius: 4px;
   padding-left: 5px;
-  margin-top: 4px;
+
   margin-bottom: 11px;
 }
 /* Стили для блока custom-input */
@@ -63,13 +135,23 @@
   background-color: #ccc;
   border: none;
   cursor: pointer;
+  border-top-right-radius: 3px;
+  border-bottom-right-radius: 3px;
 }
+.increment-button:hover {
+  background-color: rgb(159, 157, 157);
+}
+
 .decrement-button {
   padding: 11px 7px;
   background-color: #ccc;
   border: none;
   border-right: 1px solid rgb(111, 111, 111);
   cursor: pointer;
+}
+
+.decrement-button:hover {
+  background-color: rgb(159, 157, 157);
 }
 
 /* Стили для <select> */
@@ -96,8 +178,12 @@
   padding: 11px 7px;
   background-color: #ccc;
   border: none;
-
   cursor: pointer;
+  border-top-right-radius: 3px;
+  border-bottom-right-radius: 3px;
+}
+.subject-button:hover {
+  background-color: rgb(159, 157, 157);
 }
 
 .button-have {
@@ -107,6 +193,11 @@
   border: none;
   border-radius: 4px;
   margin-bottom: 1px;
+  cursor: pointer;
+}
+
+.button-have:hover {
+  background-color: rgb(159, 157, 157);
 }
 
 .line {

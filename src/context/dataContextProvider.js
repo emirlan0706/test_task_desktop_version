@@ -1,3 +1,5 @@
+// Ваш файл dataContextProvider.js
+
 import React, { createContext, useContext, useEffect, useState } from "react";
 
 export const DataContext = createContext();
@@ -32,9 +34,16 @@ export const DataProvider = ({ children }) => {
     setTableData([...tableData, data]);
   };
 
-  const removeData = (index) => {
+  const clearData = () => {
+    // Очистите данные в localStorage
+    localStorage.removeItem("tableData");
+    // Очистите данные в состоянии
+    setTableData([]);
+  };
+
+  const editData = (index, data) => {
     const updatedData = [...tableData];
-    updatedData.splice(index, 1);
+    updatedData[index] = data;
     setTableData(updatedData);
   };
 
@@ -47,7 +56,8 @@ export const DataProvider = ({ children }) => {
       value={{
         tableData,
         addData,
-        removeData,
+        clearData,
+        editData,
         isNightMode,
         toggleNightMode,
       }}
