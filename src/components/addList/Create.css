@@ -1,0 +1,287 @@
+.night-mode.last {
+  background-color: #444;
+}
+
+.night-mode .main {
+  background-color: #444;
+  color: rgb(206, 205, 205);
+  border: 1.5px solid rgb(209, 209, 209);
+  border-radius: 5px;
+}
+
+.night-mode .main::before {
+  background-color: #444;
+  color: rgb(252, 252, 252);
+}
+
+.night-mode .age-input {
+  background-color: #444;
+  color: #fff;
+}
+
+.night-mode .name-input {
+  background-color: #444;
+  color: #fff;
+}
+
+.night-mode .subject-select {
+  background-color: #444;
+  color: #fff;
+}
+
+.night-mode .check::before {
+  background-color: #444;
+  color: #fff;
+}
+
+.night-mode .check:checked::after {
+  background-color: #444;
+  color: #fff;
+  border-bottom: 3px solid #cbcbcb;
+  border-left: 3px solid #cccccc;
+}
+
+.night-mode .toggle-label::after {
+  background-color: #444;
+  color: #fff;
+  background: rgb(208, 208, 208);
+}
+
+.night-mode .decrement-button,
+.night-mode .increment-button,
+.night-mode .subject-button,
+.night-mode .button-have {
+  background-color: #444;
+  color: #fff;
+  background: rgb(114, 114, 114);
+}
+
+.last {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding-top: 190px;
+  padding-bottom: 200px;
+  background-color: #fff;
+}
+
+.main {
+  display: flex;
+  justify-content: center;
+  align-items: baseline;
+  flex-direction: column;
+  width: 265px;
+  height: 390px;
+  border: 1px solid #000;
+  border-radius: 5px;
+  position: relative;
+  overflow: visible;
+  margin-left: 23px;
+  margin-right: 23px;
+  padding: 0px 5px 0px 5px;
+  background-color: #fff;
+}
+
+.main::before {
+  content: "Insert Row";
+  position: absolute;
+  background-color: #fff;
+  top: -12px;
+  left: 10px;
+}
+
+.name-input {
+  width: 254px;
+  height: 40px;
+  text-align: start;
+  font-size: 16px;
+  outline: none;
+  border: 1px solid rgb(130, 128, 128);
+  border-radius: 4px;
+  padding-left: 5px;
+  margin-bottom: 11px;
+}
+
+.custom-input {
+  outline: none;
+  display: flex;
+  align-items: center;
+  border: 1px solid rgb(130, 128, 128);
+  border-radius: 4px;
+  margin-bottom: 11px;
+}
+
+.age-input {
+  width: 199px;
+  height: 37px;
+  outline: none;
+  text-align: start;
+  border: 0px solid rgb(130, 128, 128);
+  padding-left: 5px;
+}
+
+.increment-button,
+.decrement-button {
+  padding: 11px 7px;
+  background-color: #ccc;
+  border: none;
+  cursor: pointer;
+  border-top-right-radius: 3px;
+  border-bottom-right-radius: 3px;
+}
+
+.increment-button:hover,
+.decrement-button:hover {
+  background-color: rgb(159, 157, 157);
+}
+
+.subject-select {
+  width: 234px;
+  height: 40px;
+  border: 0px solid rgb(130, 128, 128);
+  border-radius: 4px;
+  font-size: 17;
+  outline: none;
+  -webkit-appearance: none;
+  padding-left: 5px;
+}
+
+.subject {
+  outline: none;
+  display: flex;
+  align-items: center;
+  border: 1px solid rgb(130, 128, 128);
+  border-radius: 4px;
+  margin-bottom: 17px;
+}
+
+.subject-button {
+  padding: 11px 7px;
+  background-color: #ccc;
+  border: none;
+  cursor: pointer;
+  border-top-right-radius: 3px;
+  border-bottom-right-radius: 3px;
+}
+
+.subject-button:hover {
+  background-color: rgb(159, 157, 157);
+}
+
+.button-have {
+  width: 265px;
+  height: 40px;
+  background-color: #ccc;
+  border: none;
+  border-radius: 4px;
+  margin-bottom: 1px;
+  cursor: pointer;
+}
+
+.button-have:hover {
+  background-color: rgb(159, 157, 157);
+}
+
+.line {
+  width: 265px;
+  background-color: rgb(155, 155, 155);
+  height: 1.2px;
+  margin-top: 20px;
+  margin-bottom: 15px;
+}
+
+.toggle-label {
+  cursor: pointer;
+  text-indent: 50px;
+  line-height: 20px;
+  width: 46px;
+  height: 23px;
+  background: rgb(89, 156, 84);
+  display: inline-block;
+  border-radius: 10px;
+  position: relative;
+  outline: none;
+  margin-bottom: 15px;
+}
+
+.toggle-label::after {
+  content: "";
+  position: absolute;
+  top: 4px;
+  left: 4px;
+  width: 15px;
+  background: rgb(17, 17, 17);
+  height: 15px;
+  border-radius: 50%;
+  transition: 0.3s;
+}
+
+input:checked + .toggle-label::after {
+  left: calc(100% - 5px);
+  transform: translateX(-100%);
+}
+
+.toggle-input {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.main-check {
+  display: flex;
+  align-items: center;
+  text-indent: 5px;
+  margin-bottom: 17px;
+}
+
+.check {
+  margin: 0;
+  padding: 0;
+  background: none;
+  border: none;
+  border-radius: 0;
+  outline: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  cursor: pointer;
+  padding-left: 30px;
+  vertical-align: middle;
+  position: relative;
+}
+
+.check::before,
+.check::after {
+  content: "";
+  display: block;
+  position: absolute;
+}
+
+.check::before {
+  background-color: #fff;
+  border-radius: 4px;
+  border: 2px solid rgb(89, 156, 84);
+  width: 20px;
+  height: 20px;
+  transform: translateY(-50%);
+  top: 50%;
+  left: 5px;
+}
+
+.check::after {
+  border-bottom: 3px solid #666464;
+  border-left: 3px solid #666464;
+  opacity: 0;
+  height: 6px;
+  width: 11px;
+  transform: scale(0) rotate(-45deg);
+  top: -7px;
+  left: 10px;
+  transition: opacity 0.3s, transform 0.2s;
+}
+
+.check:checked::after {
+  opacity: 1;
+  transform: scale(1) rotate(-45deg);
+}

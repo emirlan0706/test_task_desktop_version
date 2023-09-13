@@ -1,13 +1,13 @@
 import React, { useState } from "react";
 import "./Create.css";
 import { HiOutlineChevronDown, HiOutlineChevronUp } from "react-icons/hi";
-import DataTable from "./DateTable";
-import { useData } from "../context/dataContextProvider";
+import DataTable from "../table/DateTable";
+import { useData } from "../../context/dataContextProvider";
 
 const Create = () => {
   const [name, setName] = useState("");
   const [age, setAge] = useState(0);
-  const [subscription, setSubscription] = useState("No Subscribed");
+  const [subscription, setSubscription] = useState("");
   const [employed, setEmployed] = useState(false);
   const {
     tableData,
@@ -17,7 +17,7 @@ const Create = () => {
     isNightMode,
     toggleNightMode,
   } = useData();
-  const [editingIndex, setEditingIndex] = useState(-1); // Индекс редактируемой записи
+  const [editingIndex, setEditingIndex] = useState(-1);
 
   const handleInsert = () => {
     const newData = {
@@ -28,15 +28,15 @@ const Create = () => {
     };
 
     if (editingIndex === -1) {
-      addData(newData); // Добавляем новую запись
+      addData(newData);
     } else {
-      editData(editingIndex, newData); // Редактируем существующую запись
-      setEditingIndex(-1); // Завершаем редактирование
+      editData(editingIndex, newData);
+      setEditingIndex(-1);
     }
 
     setName("");
     setAge(0);
-    setSubscription("No Subscribed");
+    setSubscription("");
     setEmployed(false);
   };
 
@@ -94,7 +94,6 @@ const Create = () => {
               onChange={(e) => setSubscription(e.target.value)}
               name="subject"
               id="subject_input"
-              required
               className="subject-select"
             >
               <option value="No Subscribed">No Subscribed</option>
@@ -109,7 +108,7 @@ const Create = () => {
             <label htmlFor="check" className="main-check">
               <input
                 type="checkbox"
-                id="check"
+                className="check"
                 checked={employed}
                 onChange={() => setEmployed(!employed)}
                 name="check"

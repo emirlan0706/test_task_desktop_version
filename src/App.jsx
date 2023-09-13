@@ -1,6 +1,5 @@
 import React from "react";
-import "./App.css";
-import Create from "./components/Create";
+import Create from "./components/addList/Create";
 import { DataProvider } from "./context/dataContextProvider";
 
 function App() {

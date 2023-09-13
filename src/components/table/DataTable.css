@@ -1,0 +1,115 @@
+.night-mode .chiled {
+  background-color: #333;
+  color: #fff;
+  border: 1px solid rgb(237, 235, 235);
+  border-radius: 5px;
+}
+
+.night-mode table {
+  background-color: #444;
+  color: #fff;
+}
+
+.night-mode tr {
+  background-color: #444;
+  color: #fff;
+}
+
+.night-mode th {
+  background-color: rgb(114, 114, 114);
+  color: #fff;
+}
+
+.night-mode tr:hover {
+  background-color: rgb(84, 82, 82);
+}
+
+.chiled {
+  display: flex;
+  align-items: baseline;
+  flex-direction: column;
+  width: 50%;
+  height: 390px;
+  border: 1px solid #000;
+  border-radius: 5px;
+  position: relative;
+  overflow: visible;
+  padding: 0px 5px 0px 5px;
+  background-color: #fff;
+  overflow: scroll;
+}
+
+.chiled::-webkit-scrollbar {
+  width: 6px;
+  background-color: transparent;
+}
+
+.chiled::-webkit-scrollbar-thumb {
+  background-color: rgb(89, 156, 84);
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+}
+
+th,
+td {
+  text-align: center;
+  font-size: 14px;
+}
+
+thead {
+  background-color: #f2f2f2;
+  font-size: 14px;
+}
+
+th {
+  background-color: #aaaaaa;
+  color: white;
+  font-size: 14px;
+  padding: 5px;
+}
+
+tr:hover {
+  background-color: #ddd;
+}
+
+.edit,
+.delete {
+  padding: 9px 2px;
+  background-color: #ccc;
+  border: none;
+  cursor: pointer;
+  border: 0px solid rgb(130, 128, 128);
+  border-radius: 3px;
+  margin-right: 3px;
+}
+
+@media (max-width: 768px) {
+  .chiled {
+    width: 100%;
+  }
+  .night-mode .chiled {
+    width: 100%;
+  }
+  table {
+    width: 100%;
+  }
+  th,
+  td {
+    padding: 3px;
+  }
+  th {
+    font-size: 11px;
+  }
+  td {
+    font-size: 9px;
+  }
+  .edit,
+  .delete {
+    padding: 8px 5px;
+    font-size: 9px;
+  }
+}

@@ -1,5 +1,3 @@
-// Ваш файл dataContextProvider.js
-
 import React, { createContext, useContext, useEffect, useState } from "react";
 
 export const DataContext = createContext();
@@ -10,7 +8,6 @@ export const DataProvider = ({ children }) => {
   const [tableData, setTableData] = useState([]);
   const [isNightMode, setIsNightMode] = useState(false);
 
-  // Загрузка данных из localStorage при монтировании
   useEffect(() => {
     const savedTableData = localStorage.getItem("tableData");
     const savedIsNightMode = localStorage.getItem("isNightMode");
@@ -24,7 +21,6 @@ export const DataProvider = ({ children }) => {
     }
   }, []);
 
-  // Сохранение данных в localStorage при изменении
   useEffect(() => {
     localStorage.setItem("tableData", JSON.stringify(tableData));
     localStorage.setItem("isNightMode", isNightMode.toString());
@@ -34,10 +30,14 @@ export const DataProvider = ({ children }) => {
     setTableData([...tableData, data]);
   };
 
+  const removeData = (index) => {
+    const updatedData = [...tableData];
+    updatedData.splice(index, 1);
+    setTableData(updatedData);
+  };
+
   const clearData = () => {
-    // Очистите данные в localStorage
     localStorage.removeItem("tableData");
-    // Очистите данные в состоянии
     setTableData([]);
   };
 
@@ -60,6 +60,7 @@ export const DataProvider = ({ children }) => {
         editData,
         isNightMode,
         toggleNightMode,
+        removeData,
       }}
     >
       {children}

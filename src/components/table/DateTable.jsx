@@ -1,9 +1,9 @@
 import React from "react";
 import "./DataTable.css";
-import { useData } from "../context/dataContextProvider";
+import { useData } from "../../context/dataContextProvider";
 
-const DataTable = ({ data, onEdit, onDelete }) => {
-  const { isNightMode } = useData();
+const DataTable = ({ data, onEdit }) => {
+  const { isNightMode, removeData } = useData();
 
   return (
     <div className="chiled">
@@ -22,13 +22,15 @@ const DataTable = ({ data, onEdit, onDelete }) => {
             <tr key={index}>
               <td>{item.name ? item.name : "Not"}</td>
               <td>{item.age}</td>
-              <td>{item.subscription ? "Subscription" : "No Subscription"}</td>
+              <td>
+                {item.subscription ? item.subscription : "Not Subscription"}
+              </td>
               <td>{item.employed ? "Employed" : "Unemployed"}</td>
               <td>
                 <button className="edit" onClick={() => onEdit(index)}>
                   Edit
                 </button>
-                <button className="delete" onClick={() => onDelete(index)}>
+                <button className="delete" onClick={() => removeData(index)}>
                   Delete
                 </button>
               </td>
