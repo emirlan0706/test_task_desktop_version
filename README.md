@@ -1,3 +1,6 @@
+<img width="1440" alt="Снимок экрана 2023-09-13 в 18 07 43" src="https://github.com/emirlan0706/worK/assets/123961393/98fcf832-1266-4e14-b866-4f272ca5ca45">
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
