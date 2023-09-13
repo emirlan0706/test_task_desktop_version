@@ -126,8 +126,6 @@
   background-color: #ccc;
   border: none;
   cursor: pointer;
-  border-top-right-radius: 3px;
-  border-bottom-right-radius: 3px;
 }
 
 .increment-button:hover,

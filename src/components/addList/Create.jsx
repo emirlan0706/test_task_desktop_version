@@ -6,7 +6,7 @@ import { useData } from "../../context/dataContextProvider";
 
 const Create = () => {
   const [name, setName] = useState("");
-  const [age, setAge] = useState(0);
+  const [age, setAge] = useState("Age");
   const [subscription, setSubscription] = useState("");
   const [employed, setEmployed] = useState(false);
   const {
@@ -77,8 +77,12 @@ const Create = () => {
           <div className="custom-input">
             <input
               type="number"
-              value={age}
-              onChange={(e) => setAge(Number(e.target.value))}
+              value={age === 0 ? "" : age}
+              placeholder={age === 0 ? "0" : age}
+              onChange={(e) => {
+                const newValue = e.target.value;
+                setAge(newValue === "" ? 0 : Number(newValue));
+              }}
               className="age-input"
             />
             <button className="decrement-button" onClick={decrementAge}>
